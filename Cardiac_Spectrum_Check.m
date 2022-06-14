@@ -26,13 +26,22 @@ classdef Cardiac_Spectrum_Check< nirs.modules.AbstractModule
                 end
                 switch obj.checkoption
                     case 1
-                        [cfs,frq] = cwt(data(i).data(:,obj.channelofinterest),data(i).Fs);
+                        try
+                            [cfs,frq] = cwt(data(i).data(:,obj.channelofinterest),data(i).Fs);
+                        catch
+                            disp('can not display cwt spectrum')
+                        end
+                            
                     case 2
-                        [cfs,frq] = cwt(mean(data(i).data(:,obj.channelofinterest),2),data(i).Fs);
+                        try
+                            [cfs,frq] = cwt(mean(data(i).data(:,obj.channelofinterest),2),data(i).Fs);
+                        catch
+                            disp('can not display cwt spectrum')
+                        end
                 end
                 subplot(4,4,count);
                 surface(data(i).time,frq,abs(cfs));
-                caxis([0 2])
+                caxis([0 10])
                 axis tight
                 shading flat
                 colorbar
