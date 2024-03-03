@@ -55,7 +55,7 @@ classdef Anti_Corr_Check < nirs.modules.AbstractModule
             for i=1:size(anticorr_ch,1)
                 [~,name,~] = fileparts(data(i).description);
                 h=text(i,0,name);
-                set(h,'Rotation',90)
+                set(h,'Rotation',-45)
             end
             
         end

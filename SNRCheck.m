@@ -48,20 +48,23 @@ classdef SNRCheck < nirs.modules.AbstractModule
             figure
             subplot(2,1,1)
             bar(mean(SNR(:,obj.channelofinterest,1),2));
+            title('HBO SNR')
             for i=1:size(sum(SNR(:,obj.channelofinterest,1),2),1)
                 [~,name,~] = fileparts(data(i).description);
                 h=text(i,0,name);
-                set(h,'Rotation',90)
+                set(h,'Rotation',45)
             end
             
             subplot(2,1,2)
             bar(mean(SNR(:,obj.channelofinterest,2),2));
+            title('HBR SNR')
             for i=1:size(sum(SNR(:,obj.channelofinterest,2),2),1)
                 [~,name,~] = fileparts(data(i).description);
                 h=text(i,0,name);
-                set(h,'Rotation',90)
+                set(h,'Rotation',45)
             end
         end
     end
 end
+
 
